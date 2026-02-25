@@ -1,0 +1,47 @@
+{
+  "name": "@indiekit/pg-inspect",
+  "version": "0.1.0",
+  "description": "PostgreSQL schema inspector - TypeScript port of schemainspect",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "pg-inspect": "dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "files": [
+    "dist",
+    "src/sql"
+  ],
+  "keywords": [
+    "postgresql",
+    "schema",
+    "inspect",
+    "database"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/pg": "^8.16.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  },
+  "dependencies": {
+    "pg": "^8.12.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
