@@ -1,5 +1,6 @@
 export { PgInspector, inspect } from './inspector.js';
 export type { ConnectionConfig } from './inspector.js';
+export { startMcpServer } from './mcp.js';
 export {
   ColumnInfo,
   InspectedSelectable,

@@ -54,8 +54,23 @@ function processQuery(q: string, pgVersion: number, includeInternal: boolean): s
   return q;
 }
 
+/** PostgreSQL connection configuration — either a connection string or a pg.PoolConfig object. */
 export type ConnectionConfig = string | pg.PoolConfig;
 
+/**
+ * PostgreSQL schema inspector.
+ *
+ * Introspects a PostgreSQL database and returns structured, typed objects
+ * representing tables, views, indexes, functions, constraints, and more.
+ *
+ * @example
+ * ```typescript
+ * const inspector = new PgInspector('postgresql://localhost/mydb');
+ * const schema = await inspector.inspect();
+ * console.log(schema.tables);
+ * await inspector.close();
+ * ```
+ */
 export class PgInspector {
   private client: pg.Pool | pg.Client;
   private ownsConnection: boolean;
@@ -567,8 +582,24 @@ export class PgInspector {
   }
 }
 
-// ── Convenience function ──
-
+/**
+ * Inspect a PostgreSQL database schema.
+ *
+ * Convenience function that creates a {@link PgInspector}, runs inspection,
+ * and closes the connection.
+ *
+ * @param config - Connection string or pg.PoolConfig
+ * @param opts - Options (e.g. `{ includeInternal: true }` to include system schemas)
+ * @returns Structured inspection result with all schema objects
+ *
+ * @example
+ * ```typescript
+ * const schema = await inspect('postgresql://localhost/mydb');
+ * for (const [name, table] of schema.tables) {
+ *   console.log(name, table.columns.size, 'columns');
+ * }
+ * ```
+ */
 export async function inspect(config: ConnectionConfig, opts?: { includeInternal?: boolean }): Promise<InspectionResult> {
   const inspector = new PgInspector(config, opts);
   try {

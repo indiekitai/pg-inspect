@@ -15,5 +15,14 @@ export default defineConfig([
     sourcemap: true,
     outDir: 'dist',
     banner: { js: '#!/usr/bin/env node' },
+    external: ['@modelcontextprotocol/sdk'],
+  },
+  {
+    entry: ['src/mcp.ts'],
+    format: ['esm'],
+    dts: true,
+    sourcemap: true,
+    outDir: 'dist',
+    external: ['@modelcontextprotocol/sdk'],
   },
 ]);
