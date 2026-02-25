@@ -1,5 +1,5 @@
 {
-  "name": "@indiekit/pg-inspect",
+  "name": "@indiekitai/pg-inspect",
   "version": "0.1.0",
   "description": "PostgreSQL schema inspector - TypeScript port of schemainspect",
   "type": "module",
