@@ -1,3 +1,5 @@
+[English](README.md) | [中文](README.zh-CN.md)
+
 # @indiekit/pg-inspect
 
 [![npm version](https://img.shields.io/npm/v/@indiekit/pg-inspect.svg)](https://www.npmjs.com/package/@indiekit/pg-inspect)
